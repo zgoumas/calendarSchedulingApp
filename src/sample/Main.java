@@ -38,6 +38,7 @@ public class Main extends Application {
             String User_Name = results.getString("User_Name");
             String Password = results.getString("Password");
 
+
             System.out.println(userID + " | " + User_Name + " | " + Password);
         }
 
