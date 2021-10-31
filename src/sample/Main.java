@@ -7,6 +7,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import sample.Utility.JDBC;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class Main extends Application {
 
         @Override
@@ -18,8 +23,24 @@ public class Main extends Application {
         }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         JDBC.openConnection();
+
+        Statement statement = JDBC.getStatement();
+
+
+        String selectStatement = "SELECT * FROM users"; //The SQL query
+        statement.execute(selectStatement); //Sending the query to MyWorkbench
+        ResultSet results = statement.getResultSet(); // The returned query
+
+        while (results.next()) {
+            int userID = results.getInt("User_ID");
+            String User_Name = results.getString("User_Name");
+            String Password = results.getString("Password");
+
+            System.out.println(userID + " | " + User_Name + " | " + Password);
+        }
+
         launch(args);
         JDBC.closeConnection();
     }

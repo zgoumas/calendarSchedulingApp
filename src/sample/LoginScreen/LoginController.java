@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import sample.Utility.JDBC;
 import sample.Utility.Toolbox;
 
+import java.sql.Connection;
+
 
 public class LoginController {
 
@@ -22,6 +24,7 @@ public class LoginController {
 
 
     public void onLoginButton(ActionEvent actionEvent) throws Exception {
+
             Parent root = FXMLLoader.load(getClass().getResource("../MainScreen/MainScreen.fxml"));
             Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root, 800, 600);
