@@ -1,10 +1,12 @@
 package sample;
 
+import com.mysql.cj.jdbc.exceptions.ConnectionFeatureNotAvailableException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.Utility.DBQuery;
 import sample.Utility.JDBC;
 
 import java.sql.Connection;
@@ -26,8 +28,10 @@ public class Main extends Application {
     public static void main(String[] args) throws SQLException {
         JDBC.openConnection();
 
-        Statement statement = JDBC.getStatement();
-
+        // LEFT OFF HERE-- everything below this is experimental
+        //Connection conn = JDBC.openConnection();
+        //DBQuery.setStatement(conn);
+       /* Statement statement = DBQuery.getStatement();
 
         String selectStatement = "SELECT * FROM users"; //The SQL query
         statement.execute(selectStatement); //Sending the query to MyWorkbench
@@ -40,7 +44,7 @@ public class Main extends Application {
 
 
             System.out.println(userID + " | " + User_Name + " | " + Password);
-        }
+        }*/
 
         launch(args);
         JDBC.closeConnection();
